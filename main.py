@@ -44,3 +44,49 @@ student_1_question = ("Чим принципово відрізняються р
 
 # Виклик функції для виконання завдання
 create_and_write_initial_data(student_1_name, student_1_question)
+
+# Код, написаний Студентом 2: Пікульов Іван КН-44/1
+def add_answer_and_question(student_name, answer, next_question):
+    """
+    Функція для додавання відповіді другого студента та нового питання.
+    
+    Аргументи:
+    student_name (str): Прізвище та ініціали студента.
+    answer (str): Відповідь на питання попереднього студента.
+    next_question (str): Питання для наступного студента.
+    
+    Використовується режим 'a' (append), щоб додати нові дані до кінця файлу,
+    не видаляючи вже наявну інформацію.
+    """
+    try:
+        with open(FILENAME, "a", encoding="utf-8") as file:
+            print(f"Файл '{FILENAME}' відкрито в режимі 'a' для додавання записів.")
+            
+            file.write(f"Студент: {student_name}\n")
+            file.write("="*25 + "\n")
+            file.write(f"Відповідь:\n{answer}\n\n")
+            file.write(f"Питання для наступного студента:\n{next_question}\n\n")
+            
+            print(f"Дані від студента '{student_name}' успішно додано до файлу.")
+    
+    except IOError as e:
+        print(f"ПОМИЛКА! Не вдалося записати у файл '{FILENAME}'.")
+        print(f"Деталі помилки: {e}")
+    except Exception as e:
+        print(f"Виникла неочікувана помилка: {e}")
+
+
+student_2_name = "Пікульов І.Ю."
+student_2_answer = (
+    "Режим 'w' (write) створює новий файл або перезаписує існуючий, стираючи всі попередні дані.\n"
+    "Режим 'a' (append) відкриває файл для дописування — новий текст додається в кінець без втрати старих даних.\n"
+    "Режим 'w' доцільно використовувати для створення нового файлу або повного оновлення вмісту,\n"
+    "а 'a' — коли потрібно додати нову інформацію, зберігаючи попередню."
+)
+
+student_2_question = (
+    "Які основні методи читання даних з файлу існують у Python (read, readline, readlines)? "
+    "Чим вони відрізняються між собою?"
+)
+
+add_answer_and_question(student_2_name, student_2_answer, student_2_question)
