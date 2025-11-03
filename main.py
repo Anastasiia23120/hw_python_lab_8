@@ -90,3 +90,58 @@ student_2_question = (
 )
 
 add_answer_and_question(student_2_name, student_2_answer, student_2_question)
+
+
+# Код, написаний Студентом 3: Могилььний Дмтро КН-44/1
+def add_next_answer_and_question(student_name, answer, next_question):
+    """
+    Функція для додавання відповіді третього студента та нового питання.
+    
+    Аргументи:
+    student_name (str): Прізвище та ініціали студента.
+    answer (str): Відповідь на питання попереднього студента.
+    next_question (str): Питання для наступного студента.
+    
+    Продовжуємо використовувати режим 'a' (append) для додавання даних у кінець файлу.
+    """
+    try:
+        with open(FILENAME, "a", encoding="utf-8") as file:
+            print(f"Файл '{FILENAME}' відкрито в режимі 'a' для додавання записів.")
+            
+            file.write(f"Студент: {student_name}\n")
+            file.write("="*25 + "\n")
+            file.write(f"Відповідь:\n{answer}\n\n")
+            file.write(f"Питання для наступного студента:\n{next_question}\n\n")
+            
+            print(f"Дані від студента '{student_name}' успішно додано до файлу.")
+    
+    except IOError as e:
+        print(f"ПОМИЛКА! Не вдалося записати у файл '{FILENAME}'.")
+        print(f"Деталі помилки: {e}")
+    except Exception as e:
+        print(f"Виникла неочікувана помилка: {e}")
+
+# Дані студента
+student_3_name = "[Студент: Могильний Д.В.]"
+student_3_answer = (
+    "Основні методи читання даних з файлу в Python:\n"
+    "1. read() - читає весь вміст файлу як один рядок\n"
+    "2. readline() - читає один рядок з файлу\n"
+    "3. readlines() - читає всі рядки файлу та повертає список рядків\n\n"
+    "Відмінності між ними:\n"
+    "- read() повертає весь вміст файлу як один рядок\n"
+    "- readline() читає по одному рядку за раз, корисний для великих файлів\n"
+    "- readlines() повертає список, де кожен елемент - окремий рядок з файлу\n"
+    "read() та readlines() завантажують весь файл у пам'ять, тому для великих файлів\n"
+    "краще використовувати readline() у циклі або ітерацію по файлу безпосередньо."
+)
+
+student_3_question = (
+    "Що таке обробка винятків (exceptions) в Python? Які основні блоки try-except "
+    "використовуються для обробки помилок і яка їхня структура?"
+)
+
+# Виклик функції для додавання відповіді
+add_next_answer_and_question(student_3_name, student_3_answer, student_3_question)
+
+print("Робота студента 3 завершена успішно!")
